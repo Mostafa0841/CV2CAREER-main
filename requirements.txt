@@ -1,0 +1,11 @@
+aspose-words==24.1.0
+beautifulsoup4==4.12.3
+docxtpl==0.16.7
+flair==0.13.1
+flashtext==2.7
+matplotlib==3.8.2
+numpy==1.26.3
+pandas==2.2.0
+spacy==3.7.2
+transformers==4.37.2
+
