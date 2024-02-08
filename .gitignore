@@ -1,2 +1,4 @@
 TOOLS/pytorch-DISTILLBERT-ResumeSectionClassifier/pytorch_model.bin
+TEMP/
+__pycache__/
 
