@@ -1,6 +1,6 @@
 from ResumeParser import *
-from Models import *
-from render_resume import *
+from Utilis.Models import *
+from Utilis.render_resume import *
 if __name__ == '__main__':
     data = {
         "Personal_Info": [

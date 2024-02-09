@@ -40,20 +40,18 @@ class Models:
         return self.ner, self.ner_dates, self.zero_shot_classifier, self.tagger
     
     def pickle_models(self):
-        self.pickle_it(self.ner, "ner")
-        self.pickle_it(self.zero_shot_classifier, "zero_shot_classifier_6")
-        self.pickle_it(self.ner_dates, "ner_dates")
-        self.pickle_it(self.tagger, "pos_tagger_fast")
+        self.pickle_it(self.ner, "Models/Parsing_Models/ner")
+        self.pickle_it(self.zero_shot_classifier, "Models/Parsing_Models/zero_shot_classifier_6")
+        self.pickle_it(self.ner_dates, "Models/Parsing_Models/ner_dates")
+        self.pickle_it(self.tagger, "Models/Parsing_Models/pos_tagger_fast")
 
 
     def load_pickled_models(self):
-        ner_dates = self.unpickle_it('ner_dates')
-        ner = self.unpickle_it('ner')
-        zero_shot_classifier = self.unpickle_it('zero_shot_classifier_6')
-        tagger = self.unpickle_it("pos_tagger_fast")
+        ner_dates = self.unpickle_it('Models/Parsing_Models/ner_dates')
+        ner = self.unpickle_it('Models/Parsing_Models/ner')
+        zero_shot_classifier = self.unpickle_it('Models/Parsing_Models/zero_shot_classifier_6')
+        tagger = self.unpickle_it("Models/Parsing_Models/pos_tagger_fast")
         return ner_dates, ner, zero_shot_classifier, tagger
-    def load_distill_bert(self):
-        classifier = pipeline("text-classification", model="TOOLS/pytorch-DISTILLBERT-ResumeSectionClassifier")
-        return classifier
+    
     def get_flair_sentence(self, sent):
         return Sentence(sent)

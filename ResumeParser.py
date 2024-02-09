@@ -1,4 +1,4 @@
-from Models import Models
+from Utilis.Models import Models
 from datetime import datetime
 from dateutil import parser
 import re
@@ -58,6 +58,11 @@ class ResumeParser:
                 languages = resume_segments[segment_name]
                 self.parse_languages(languages)
                 print("---Finished Parsing Languages---")
+            elif segment_name == "References":
+                print("---Parsing References---")
+                references = resume_segments[segment_name]
+                self.parse_references(references)
+                print("---Finished Parsing References---")
            
         return self.parsed_cv
 
@@ -376,6 +381,8 @@ class ResumeParser:
         
     def parse_languages(self, languages):
         self.parsed_cv['Languages'] = languages
+    def parse_references(self, references):
+        self.parsed_cv['References'] = references
 
     def print_data(self):
         print("Name : ", self.parsed_cv["Name"])
