@@ -2,6 +2,7 @@
 CV2CAREER Graduation Project CS
 
 Setup Steps : 
+
 1 - Download the Distill-bert model from this link : 
 https://huggingface.co/has-abi/extended_distilBERT-finetuned-resumes-sections/resolve/main/pytorch_model.bin?download=true
 
