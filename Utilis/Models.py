@@ -2,6 +2,8 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification, AutoMod
 from transformers import pipeline
 from flair.data import Sentence
 from flair.models import SequenceTagger
+from Classifiers.LSTM import *
+from Classifiers.DISTILL import *
 import pickle
 
 
@@ -17,7 +19,16 @@ class Models:
             return pickle.load(f)
 
     def load_trained_models(self, pickle=False):
+        lstm_obj = BidirectionalLstm()
+        lstm_obj.Load_Model("Models/LSTM-LineType-Classifier/")
+        self.lstm = lstm_obj
+        
+        distill_obj = DISTILL()
+        distill_obj.Load_Model()
+        self.distill=distill_obj
+        
         #NER (dates)
+        
         tokenizer = AutoTokenizer.from_pretrained("Jean-Baptiste/camembert-ner-with-dates")
         model = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/camembert-ner-with-dates")
         self.ner_dates = pipeline('ner', model=model, tokenizer=tokenizer, aggregation_strategy="simple")
@@ -37,7 +48,7 @@ class Models:
         if pickle:
             self.pickle_models()
         
-        return self.ner, self.ner_dates, self.zero_shot_classifier, self.tagger
+        return self.ner, self.ner_dates, self.zero_shot_classifier, self.tagger ,self.lstm , self.distill
     
     def pickle_models(self):
         self.pickle_it(self.ner, "Models/Parsing_Models/ner")
