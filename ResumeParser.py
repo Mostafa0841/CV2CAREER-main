@@ -28,7 +28,7 @@ class ResumeParser:
                 resume_segment = resume_segments[segment_name]
                 self.parse_job_history(resume_segment)
                 print("---Finished Parsing Work Experience---")
-            elif segment_name == "Personal_Info":
+            elif segment_name == "Personal_Info" or segment_name == "Summary":
                 print("---Parsing Personal_Info---")
                 contact = resume_segments[segment_name]
                 self.parse_contact_info(contact)
@@ -38,7 +38,7 @@ class ResumeParser:
                 education = resume_segments[segment_name]
                 self.parse_education(education)
                 print("---Finished Parsing Education---")
-            elif segment_name == "Skills":
+            elif segment_name == "Skills1" or segment_name == "Skills2":
                 print("---Parsing Skills---")
                 skills= resume_segments[segment_name]
                 self.parse_skills(skills)

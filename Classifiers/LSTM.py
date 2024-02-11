@@ -57,7 +57,7 @@ class BidirectionalLstm():
 if __name__ == "__main__":
     lstm = BidirectionalLstm()
 
-    lstm.Load_Model()
-    y = lstm.predict_line("References")
+    lstm.Load_Model("Models/LSTM-LineType-Classifier")
+    y = lstm.predict_line("""Profile name : mostafa """)
     print(y)
 

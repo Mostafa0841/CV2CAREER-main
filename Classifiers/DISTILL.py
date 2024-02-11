@@ -12,6 +12,12 @@ class DISTILL:
 
     def predict_segment(self,txt):
         # Use the pipeline's predict method to get predictions directly
+        if (len(txt)) : 
+         # Truncate input text to 512 tokens
+            txt = " ".join(txt.split()[:400])
+
+        # Use the pipeline's predict method to get predictions directly
+        result = self.Model(txt)
         result = self.Model(txt)
         predicted_label = result[0]["label"]
         print(f"{txt} : {predicted_label}")
