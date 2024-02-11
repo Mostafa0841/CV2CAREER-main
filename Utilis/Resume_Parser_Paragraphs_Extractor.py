@@ -10,9 +10,9 @@ class WordParser:
     def Segmenting_Resume(self):
 
         doc = aw.Document(self.file_path)
-        doc.save("TMEP/temp.html")
+        doc.save("TEMP/HTML_Format/temp.html")
 
-        with open("TEMP/temp.html", "r", encoding="utf-8") as html_file:
+        with open("TEMP/HTML_Format/temp.html", "r", encoding="utf-8") as html_file:
             html = html_file.read()
             soup = BeautifulSoup(html, 'html.parser')
             self.soup = soup
@@ -34,7 +34,9 @@ class WordParser:
                 else:
                     paragraph_text += "\n"
             if(len(paragraph_text.strip())>0 and "Aspose" not in paragraph_text):
-                results.append(paragraph_text) 
+                cleaned_text = ''.join(char for char in paragraph_text if ord(char) < 128)
+                cleaned_text = cleaned_text.lstrip()
+                results.append(cleaned_text) 
         self.paragraphs = results
 
 
